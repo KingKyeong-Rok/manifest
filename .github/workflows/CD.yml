@@ -1,0 +1,44 @@
+name: CD Pipeline
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cd:
+    needs: [ci]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Target Repository
+        uses: actions/checkout@v2
+        with:
+          repository: iamchoiz/k8-cicd-argocd
+          path: deploy-k8s
+
+      - name: Replace image tag in helm values (LOCAL)
+        uses: mikefarah/yq@v4
+        env:
+          IMAGE_TAG: ${{ secrets.IMAGE_TAG }}
+        with:
+          cmd: yq eval -i '.image.tag = env(IMAGE_TAG)' 'deploy-k8s/demo/values.yaml'
+
+      - name: Replace image tag in helm values (EKS)
+        uses: mikefarah/yq@v4
+        env:
+          IMAGE_TAG: ${{ secrets.IMAGE_TAG }}
+        with:
+          cmd: yq eval -i '.image.tag = env(IMAGE_TAG)' 'deploy-k8s/demo/values-eks.yaml'
+
+      - name: Push helm repo
+        env:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          IMAGE_TAG: ${{ secrets.IMAGE_TAG }}
+        run: |
+          cd deploy-k8s
+          git config --global user.email "dachan1207@gmail.com"
+          git config --global user.name "iamchoiz"
+
+          git add demo/values.yaml demo/values-eks.yaml
+          git commit --message "Update demo image tag to $IMAGE_TAG"
+          git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
+          git push --prune https://token:$token@github.com/iamchoiz/k8-cicd-argocd.git
