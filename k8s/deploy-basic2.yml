@@ -1,26 +1,24 @@
 apiVersion: apps/v1 
 kind: Deployment      # 오브젝트 정의
 metadata:
-  name: deploy-basic2  # Deployment 이름 ---> 안 바꿔도 되는데 그냥 식별하기 위해 넣어주는 것
+  name: deploy-basic  # Deployment 이름 ---> 안 바꿔도 되는데 그냥 식별하기 위해 넣어주는 것
   labels:
-    app: nginx
+    app: kkr
 spec:
   replicas: 2
   selector: 
     matchLabels: 
-      app: nginx
+      app: kkr
   template:
     metadata:
       labels:
-        app: nginx
-      labels: 
-        app: nginx
+        app: kkr
     spec:
       containers: 
-        - name: container-name
-          image: httpd:alpine3.19 
+        - name: kkr
+          image: kyeongrokkim/kube_boot:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           resources:
             limits:
               memory: "200Mi"
