@@ -16,7 +16,7 @@ spec:
     spec:
       containers: 
         - name: kkr
-          image: kyeongrokkim/kube_boot:latest
+          image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app:latest
           ports:
             - containerPort: 80
           resources:
