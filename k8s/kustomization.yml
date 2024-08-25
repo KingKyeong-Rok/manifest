@@ -1,0 +1,19 @@
+# kustomize 구성 파일로, 여러 Kubernetes 리소스를 관리합니다.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# 포함할 Kubernetes 리소스 파일들을 지정합니다.
+resources:
+  - app.yml
+  - configmap.yml
+  - deploy-basic1.yml
+  - deploy-basic2.yml
+  - service1.yml
+  - service2.yml
+
+# 이미지 설정을 업데이트합니다.
+# 배포할 Docker 이미지의 이름과 태그를 지정합니다.
+images:
+  - name: kyeongrokkim/kube_boot
+    newTag: latest
+
