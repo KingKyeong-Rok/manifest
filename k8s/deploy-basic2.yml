@@ -16,13 +16,16 @@ spec:
     spec:
       containers: 
         - name: kkr
-          image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app:latest
+          image: kyeongrokkim/kube_boot:latest
           ports:
             - containerPort: 80
           resources:
             limits:
               memory: "200Mi"
               cpu: "200m"
+
+
+# kyeongrokkim/kube_boot:latest
 
 # 자동완성 디플로이먼트
 # apiVersion: apps/v1

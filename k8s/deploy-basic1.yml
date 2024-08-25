@@ -1,28 +1,28 @@
-# apiVersion: apps/v1 
-# kind: Deployment      # 오브젝트 정의
-# metadata:
-#   name: nginx-deploy  # Deployment 이름 ---> 안 바꿔도 되는데 그냥 식별하기 위해 넣어주는 것
-#   labels:
-#     app: test
-# spec:
-#   replicas: 2
-#   selector: 
-#     matchLabels: 
-#       app: test
-#   template:
-#     metadata:
-#       labels:
-#         app: test
-#     spec:
-#       containers: 
-#         - name: nginx-test
-#           image: httpd:alpine3.19 
-#           ports:
-#             - containerPort: 8080
-#           resources:
-#             limits:
-#               memory: "200Mi"
-#               cpu: "200m"
+apiVersion: apps/v1 
+kind: Deployment      # 오브젝트 정의
+metadata:
+  name: nginx-deploy  # Deployment 이름 ---> 안 바꿔도 되는데 그냥 식별하기 위해 넣어주는 것
+  labels:
+    app: test
+spec:
+  replicas: 2
+  selector: 
+    matchLabels: 
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers: 
+        - name: nginx-test
+          image: httpd:alpine3.19 
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "200Mi"
+              cpu: "200m"
 
 # # 자동완성 디플로이먼트
 # # apiVersion: apps/v1
