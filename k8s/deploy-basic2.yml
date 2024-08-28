@@ -16,7 +16,7 @@ spec:
     spec:
       containers: 
         - name: kkr
-          image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app-repo:2eebfc0
+          image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app-repo:4e14388
           ports:
             - containerPort: 80
           resources:
@@ -43,7 +43,7 @@ spec:
 #     spec:
 #       containers:
 #       - name: myapp
-#         image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app-repo:2eebfc0
+#         image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app-repo:4e14388
 #         resources:
 #           limits:
 #             memory: "128Mi"
