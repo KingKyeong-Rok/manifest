@@ -16,7 +16,7 @@ spec:
     spec:
       containers: 
         - name: kkr
-          image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app-repo:4e14388
+          image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app-repo:8ebeca0
           ports:
             - containerPort: 80
           resources:
