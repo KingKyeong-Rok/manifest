@@ -16,7 +16,7 @@ spec:
     spec:
       containers: 
         - name: kkr
-          image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app-repo:e3c9f3a
+          image: registry.gitlab.com/kkr-cicd/kkr-cicd:866401f750e612f8617f4d3f78e2700c4bd903bb
           ports:
             - containerPort: 80
           resources:
