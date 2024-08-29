@@ -16,7 +16,7 @@ spec:
     spec:
       containers: 
         - name: kkr
-          image: registry.gitlab.com/kkr-cicd/kkr-cicd:866401f750e612f8617f4d3f78e2700c4bd903bb
+          image: registry.gitlab.com/kkr-cicd/app:866401f750e612f8617f4d3f78e2700c4bd903bb
           ports:
             - containerPort: 80
           resources:
