@@ -1,58 +1,57 @@
-# apiVersion: apps/v1 
-# kind: Deployment      # 오브젝트 정의
-# metadata:
-#   name: kkr-deploy  # Deployment 이름 ---> 안 바꿔도 되는데 그냥 식별하기 위해 넣어주는 것
-#   labels:
-#     app: kkr
-# spec:
-#   replicas: 2
-#   selector: 
-#     matchLabels: 
-#       app: kkr
-#   template:
-#     metadata:
-#       labels:
-#         app: kkr
-#     spec:
-#       containers: 
-#         - name: kkr
-#           image: registry.gitlab.com/kkr-cicd/kkr-cicd:866401f750e612f8617f4d3f78e2700c4bd903bb
-#           ports:
-#             - containerPort: 80
-#           resources:
-#             limits:
-#               memory: "500Mi"
-#               cpu: "500m"
-#       imagePullSecrets:
-#         - name: gitlab-registry-secret
+apiVersion: apps/v1 
+kind: Deployment      # 오브젝트 정의
+metadata:
+  name: kkr-deploy  # Deployment 이름 ---> 안 바꿔도 되는데 그냥 식별하기 위해 넣어주는 것
+  labels:
+    app: kkr
+spec:
+  replicas: 2
+  selector: 
+    matchLabels: 
+      app: kkr
+  template:
+    metadata:
+      labels:
+        app: kkr
+    spec:
+      containers: 
+        - name: kkr
+          image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app-repo:c44b54e
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+
 
 
 
 # kyeongrokkim/kube_boot:latest
 
 # 자동완성 디플로이먼트
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: myapp
-spec:
-  selector:
-    matchLabels:
-      app: myapp
-  template:
-    metadata:
-      labels:
-        app: myapp
-    spec:
-      containers:
-      - name: myapp
-        image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app-repo:c44b54e
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: <Port>
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: myapp
+# spec:
+#   selector:
+#     matchLabels:
+#       app: myapp
+#   template:
+#     metadata:
+#       labels:
+#         app: myapp
+#     spec:
+#       containers:
+#       - name: myapp
+#         image: 891377406720.dkr.ecr.ap-northeast-2.amazonaws.com/my-app-repo:c44b54e
+#         resources:
+#           limits:
+#             memory: "128Mi"
+#             cpu: "500m"
+#         ports:
+#         - containerPort: <Port>
 
 # -------------------------------------------------------------------------------------------------------------------------------------------
 
